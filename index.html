@@ -106,6 +106,23 @@
             text-align: center;
             padding: 10rem 2rem 6rem;
             background: var(--black);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .hero > *:not(.hero-canvas) {
+            position: relative;
+            z-index: 1;
         }
 
         .hero-logo {
@@ -366,6 +383,9 @@
             border: 1px solid rgba(255, 107, 53, 0.2);
             border-left: 4px solid var(--orange);
             transition: all 0.3s ease;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
         }
 
         .principle:hover {
@@ -560,6 +580,7 @@
     </header>
 
     <section class="hero">
+        <canvas class="hero-canvas" id="heroCanvas"></canvas>
         <img src="https://mygaso.com/gaso-logo.png" alt="MyGaso Logo" class="hero-logo">
 
         <h1>Il GASO è l'entusiasmo<br>che prende forma.</h1>
@@ -630,7 +651,7 @@
             </div>
         </div>
 
-        <p style="text-align: center; color: #888; font-size: 0.95rem; margin-top: 2rem;">Se cerchi motivazione o task da fare, MyGaso non è quello giusto.<br>Se cerchi chiarezza prima di muoverti, sì.</p>
+        <p style="text-align: center; color: #aaa; font-size: 1.1rem; font-weight: 500; margin-top: 2rem;">Se cerchi motivazione o task da fare, MyGaso non è quello giusto.<br>Se cerchi chiarezza prima di muoverti, sì.</p>
     </section>
 
     <section>
@@ -697,5 +718,79 @@
             <p>I contenuti di questo sito sono protetti da diritto d'autore.</p>
         </div>
     </footer>
+
+    <script>
+        (function() {
+            const canvas = document.getElementById('heroCanvas');
+            const ctx = canvas.getContext('2d');
+
+            let lines = [];
+            const lineCount = 12;
+            const lineColor = 'rgba(255, 107, 53, 0.15)';
+
+            function resize() {
+                canvas.width = canvas.offsetWidth;
+                canvas.height = canvas.offsetHeight;
+            }
+
+            function initLines() {
+                lines = [];
+                const centerX = canvas.width / 2;
+                const centerY = canvas.height / 2;
+
+                for (let i = 0; i < lineCount; i++) {
+                    const angle = (Math.PI * 2 / lineCount) * i;
+                    lines.push({
+                        angle: angle,
+                        progress: Math.random(),
+                        speed: 0.002 + Math.random() * 0.003,
+                        length: 0.3 + Math.random() * 0.2
+                    });
+                }
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                const centerX = canvas.width / 2;
+                const centerY = canvas.height / 2;
+                const maxRadius = Math.max(canvas.width, canvas.height) * 0.7;
+
+                ctx.strokeStyle = lineColor;
+                ctx.lineWidth = 1;
+
+                lines.forEach(line => {
+                    const startRadius = maxRadius * line.progress;
+                    const endRadius = maxRadius * Math.min(line.progress + line.length, 1);
+
+                    const startX = centerX + Math.cos(line.angle) * startRadius;
+                    const startY = centerY + Math.sin(line.angle) * startRadius;
+                    const endX = centerX + Math.cos(line.angle) * endRadius;
+                    const endY = centerY + Math.sin(line.angle) * endRadius;
+
+                    ctx.beginPath();
+                    ctx.moveTo(startX, startY);
+                    ctx.lineTo(endX, endY);
+                    ctx.stroke();
+
+                    line.progress += line.speed;
+                    if (line.progress > 1) {
+                        line.progress = -line.length;
+                    }
+                });
+
+                requestAnimationFrame(draw);
+            }
+
+            resize();
+            initLines();
+            draw();
+
+            window.addEventListener('resize', () => {
+                resize();
+                initLines();
+            });
+        })();
+    </script>
 </body>
 </html>
