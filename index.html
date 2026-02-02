@@ -223,9 +223,9 @@
         }
 
         section:nth-of-type(2) {
-            background: var(--off-white);
+            background: var(--gray);
             max-width: 100%;
-            color: var(--black);
+            color: var(--white);
         }
 
         section:nth-of-type(2) > * {
@@ -235,7 +235,7 @@
         }
 
         section:nth-of-type(3) {
-            background: var(--gray);
+            background: var(--black);
             max-width: 100%;
         }
 
@@ -246,9 +246,9 @@
         }
 
         section:nth-of-type(4) {
-            background: var(--off-white);
+            background: var(--gray);
             max-width: 100%;
-            color: var(--black);
+            color: var(--white);
         }
 
         section:nth-of-type(4) > * {
@@ -258,7 +258,7 @@
         }
 
         section:nth-of-type(5) {
-            background: var(--gray);
+            background: var(--black);
             max-width: 100%;
         }
 
@@ -276,29 +276,31 @@
         }
 
         .usp-box {
-            background: var(--white);
-            border: 2px solid var(--orange);
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 107, 53, 0.3);
             border-radius: 16px;
             padding: 3rem;
             text-align: center;
             margin-bottom: 0;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
         }
 
         .usp-box:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.2);
+            border-color: rgba(255, 107, 53, 0.6);
+            box-shadow: 0 0 30px rgba(255, 107, 53, 0.15);
         }
 
         .usp-box h3 {
             font-size: 2rem;
-            color: var(--orange);
+            color: var(--white);
             margin-bottom: 1rem;
         }
 
         .usp-box p {
             font-size: 1.25rem;
-            color: var(--light-gray);
+            color: #ccc;
         }
 
         .steps {
@@ -319,7 +321,7 @@
         .step:hover {
             border-color: var(--orange);
             transform: translateY(-8px);
-            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+            box-shadow: 0 0 25px rgba(255, 107, 53, 0.15);
         }
 
         .step-number {
@@ -344,10 +346,11 @@
         .step h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
+            color: var(--white);
         }
 
         .step p {
-            color: var(--light-gray);
+            color: #ccc;
         }
 
         .principles {
@@ -357,16 +360,18 @@
         }
 
         .principle {
-            background: var(--white);
+            background: rgba(26, 26, 26, 0.6);
             border-radius: 12px;
             padding: 2rem;
+            border: 1px solid rgba(255, 107, 53, 0.2);
             border-left: 4px solid var(--orange);
             transition: all 0.3s ease;
         }
 
         .principle:hover {
             transform: translateX(8px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border-color: rgba(255, 107, 53, 0.6);
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.15);
         }
 
         .principle-number {
@@ -380,11 +385,11 @@
         .principle h3 {
             font-size: 1.5rem;
             margin-bottom: 0.75rem;
-            color: var(--black);
+            color: var(--white);
         }
 
         .principle p {
-            color: var(--light-gray);
+            color: #ccc;
         }
 
         .excess-warning {
