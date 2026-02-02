@@ -383,9 +383,6 @@
             border: 1px solid rgba(255, 107, 53, 0.2);
             border-left: 4px solid var(--orange);
             transition: all 0.3s ease;
-            min-height: 120px;
-            display: flex;
-            align-items: center;
         }
 
         .principle:hover {
@@ -410,6 +407,13 @@
 
         .principle p {
             color: #ccc;
+        }
+
+        .example-card {
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .excess-warning {
@@ -630,23 +634,23 @@
         <h2>Puoi scrivere a MyGaso cose come:</h2>
 
         <div class="principles">
-            <div class="principle">
+            <div class="principle example-card">
                 <p>"Dovrei accettare questa proposta?"</p>
             </div>
 
-            <div class="principle">
+            <div class="principle example-card">
                 <p>"Sto pensando di cambiare lavoro ma non so se è il momento giusto."</p>
             </div>
 
-            <div class="principle">
+            <div class="principle example-card">
                 <p>"Continuo a rimandare questa decisione e non capisco perché."</p>
             </div>
 
-            <div class="principle">
+            <div class="principle example-card">
                 <p>"Ho già deciso, ma voglio capire se sto andando nella direzione giusta."</p>
             </div>
 
-            <div class="principle">
+            <div class="principle example-card">
                 <p>"Sono molto gasato per questa cosa: dimmi se ha senso spingere ora."</p>
             </div>
         </div>
