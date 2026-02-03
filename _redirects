@@ -1,2 +1,3 @@
+/app/api/*  https://mygaso-app.netlify.app/api/:splat  200
 /app  https://mygaso-app.netlify.app  200
 /app/*  https://mygaso-app.netlify.app/:splat  200
